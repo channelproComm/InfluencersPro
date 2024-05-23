@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static '/css/cate.css' %}">
+<div class="container">
+  <h2 style="text-align: center;" class="fw-bold">Packages</h2>
+  <br>
+  {% if user.is_authenticated and user.is_staff %}
+  <div class="row">
+    <div class="col add">
+      <button id="myBtn" class="btn sub">Add</button>
+    </div>
+  </div>
+  {% endif %}
+  <br>
+</div>
+<br>
+<div class="container">
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Packages</th>
+      <th>Credit Amount</th>
+      {% if user.is_authenticated and user.is_staff %}
+      <th>Delete</th>
+      <th>Edit</th>
+      {% endif %}
+    </tr>
+    {% for adjusted_cate in adjusted_cate %}
+    <tr>
+      <td>{{ adjusted_cate.cat.id }}</td>
+      <td>{{ adjusted_cate.cat.category }}</td>
+      <td><span>&#8377;</span>{{ adjusted_cate.adjusted_price|floatformat:2 }}</td>
+      {% if user.is_authenticated and user.is_staff %}
+      <td><a href="{% url 'deletecategory' adjusted_cate.cat.id %}" class="del"><i class="fa fa-trash-o" class="del"></i></a></td>
+      <td><a href="{% url 'updatecategory' adjusted_cate.cat.id %}" class="del"><i class="fa fa-edit"></i></a></td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Add Packages</h2>
+      <span class="close">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div>
+        <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="" class="form-label">Packages</label>
+            <input type="text" Required name="category" class="form-control" placeholder="Packages">
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">Credit Amount</label>
+            <input type="number" Required name="price" class="form-control" placeholder="Credit Amount">
+          </div>
+          <button type="submit" class="btn sub">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var modal = document.getElementById("myModal");
+  var btn = document.getElementById("myBtn");
+  var span = document.getElementsByClassName("close")[0];
+
+  btn.onclick = function () {
+    modal.style.display = "block";
+  }
+
+  span.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+{% endblock content %}

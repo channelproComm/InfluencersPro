@@ -1,0 +1,144 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+/* Design */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #ecf9ff;
+}
+
+body {
+  color: #272727;
+  font-family: 'Quicksand', serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 16px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+.img {
+  max-width: 38%;
+  height: 36%; /* Add a subtle border to images */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+tr:hover {
+  background-color: #eeeded;
+}
+
+.wel {
+
+  padding: 20px;
+  font-size: 25px;
+
+}
+
+a {
+  text-decoration: none;
+  color: #3094ad;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cat {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-bottom: 10px;
+  /* Added margin for better spacing */
+  width: 119px;
+  height: 40px;
+  background-color: rgb(237, 63, 63);
+  color: black;
+  border-radius: 10px;
+  display: inline-block;
+  /* Display inline for horizontal alignment */
+}
+
+.text {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-size: x-large;
+  display: block;
+  /* Display block for vertical alignment */
+}
+
+
+
+.selected {
+  background-color: rgb(221, 89, 89);
+  color: white;
+}
+
+h3 {
+  text-align: center;
+  /* Centered heading */
+}
+
+/* Media queries for responsiveness */
+@media only screen and (max-width: 767px) {
+
+  .cd {
+    margin-left: 0;
+  }
+
+  .cat,
+  .text {
+    margin-bottom: 5px;
+  }
+}
+
+.desg:hover {
+  background-color: #ed3f3f;
+  color: #000;
+  opacity: 0.8;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+.cd {
+  margin-left: 110px;
+  text-align: center
+}
+
+#contentContainer.navbar-opened {
+  margin-left: 0;
+  margin-right: 0;
+  /* Adjust based on your design */
+  margin-top: 50px;
+  width: 100%;
+
+  .cd {
+    margin-left: 20px;
+  }
+  .img{
+    max-width: 82%;
+    height: 36%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}

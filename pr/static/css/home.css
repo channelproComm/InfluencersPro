@@ -1,0 +1,59 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+/* Design */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #ecf9ff;
+}
+
+body {
+    color: #272727;
+    font-family: 'Quicksand', serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+.text {
+  text-decoration: none;
+  color: black;
+  font-size: x-large;
+}
+
+a:hover {
+  color: black;
+}
+
+.cat {
+  padding: 10px; /* Adjust padding */
+  width: 119px; /* Take full width on smaller screens */
+  background-color: rgb(237, 63, 63);
+  color: black;
+  display: block; /* Ensure each link takes the full width */
+  margin-bottom: 10px; /* Add margin between links */
+  border-radius:10px;
+}
+
+.pack {
+  padding-left: 20px; /* Adjust padding */
+  padding-right: 20px; /* Adjust padding */
+}
+
+/* Media query for responsiveness */
+@media only screen and (min-width: 768px) {
+  .cat {
+    width: auto; /* Reset width for larger screens */
+    display: inline-block; /* Display links in a row */
+    margin-right: 10px; /* Add margin between links */
+  }
+
+  .pack {
+    padding-left: 50px; /* Adjust padding for larger screens */
+    padding-right: 50px; /* Adjust padding for larger screens */
+  }
+}

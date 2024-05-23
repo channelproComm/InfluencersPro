@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block title %}Influencerspro - Add Media{% endblock %}
+{% block content %}
+<style>
+  .form-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+
+  .col-25, .col-75 {
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 768px) {
+    .col-25 {
+      width: 25%;
+    }
+
+    .col-75 {
+      width: 75%;
+    }
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+
+  .btn-primary {
+    background-color: rgb(235, 67, 67);
+    color: black;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary:hover{
+    color: black;
+    background-color: rgb(235, 67, 67);
+  }
+</style>
+
+<div class="form-container">
+  <h2>Add Data</h2>
+  <br><br>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <div class="col-25">
+        <label for="media" class="form-label">Media</label>
+      </div>
+      <div class="col-75">
+        <input type="text" required name="media" class="form-control" placeholder="Media">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-25">
+        <label for="type" class="form-label">Type</label>
+      </div>
+      <div class="col-75">
+        <input type="text" required name="type" class="form-control" placeholder="Type">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-25">
+        <label for="type" class="form-label">Industry</label>
+      </div>
+      <div class="col-75">
+        <input type="text" required name="industry" class="form-control" placeholder="Industry">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-25">
+        <label for="type" class="form-label">Audience</label>
+      </div>
+      <div class="col-75">
+        <input type="text" required name="audience" class="form-control" placeholder="Audience">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-25">
+        <label for="type" class="form-label">Visting</label>
+      </div>
+      <div class="col-75">
+        <input type="text" required name="visting" class="form-control" placeholder="Visting">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-25">
+        <label for="type" class="form-label">Cost</label>
+      </div>
+      <div class="col-75">
+        <input type="text" required name="cost" class="form-control" placeholder="Cost">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="col-25">
+        <label for="type" class="form-label">Category</label>
+      </div>
+      <div class="col-75">
+        <select name="category" class="form-control">
+          <option value="disable hidden">--Select Category--</option>
+          {% for categories in categories %}
+          <option value="{{ categories.id }}">{{ categories.category }}</option>
+          {% endfor %}
+      </select>
+      </div>
+  </div>
+
+    <div class="form-group">
+      <div class="col-25">
+        <label for="logo" class="form-label">Image</label>
+      </div>
+      <div class="col-75">
+        <input type="file" required name="logo" class="form-control" placeholder="Image">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Insert</button>
+    </div>
+  </form>
+</div>
+
+{% endblock content %}

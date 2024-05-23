@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<br><br>
+<div>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Total PR</h5>
+      <p class="card-text">{{ length }}</p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <h4>Check Our Various Packages</h4><br>
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+        {% for category in categorys %}
+        <a href="{% url 'show' %}?category={{ category.category }}"
+          class="text cat {% if para in category.category %}selected{% endif %}" {{ firstname }}>
+          {{ category.category }}
+        </a>
+        {% endfor %}
+    </div>
+    <div class="col-sm-12 col-md-8">
+      <div class="container pack">
+        <table class="table table-striped">
+          {% if pages %}
+          <tr>
+            <th>Logo</th>
+            <th>Media</th>
+            <th>Type</th>
+            <th>Industry</th>
+            <th>Top 3 visiting countries</th>
+            <th>Potential Audience</th>
+            <th>Action</th>
+          </tr>
+          {% for page in pages %}
+          <tr>
+            <td><img src="{{ page.logo.url }}" class="img-fluid" alt="Logo"></td>
+            <td>{{ page.media }}</td>
+            <td>{{ page.type }}</td>
+            <td>{{ page.industry }}</td>
+            <td>{{ page.visting }}</td>
+            <td>{{ page.audience }}</td>
+            <td><a href="{{ page.action }}" target="_blank">{{ page.action }}</a></td>
+          </tr>
+          {% endfor %}
+          {% endif %}
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

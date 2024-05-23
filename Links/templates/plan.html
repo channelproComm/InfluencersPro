@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block title %}Influencerspro - Plan{% endblock %}
+{% block content %}
+{% load static %}
+<title>Plans</title>
+<br>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/plan.css' %}">
+<div id="contentContainer">
+    <div class="container">
+        <h3>Currently Plan: </h3>
+        <ul class="cards plancard">
+          <li class="cards_item">
+            <a href="{% url 'mediass' %}">
+            <div class="card">
+              <div class="card_content plan">
+                <h2 class="plantitle">{{ package }}</h2>
+              </div>
+            </div>
+          </a>
+          </li>
+        </ul>
+    </div>
+    <br>
+    <br>
+    <div class="main">
+        <h3 style="text-align: center;">Other Plans</h3>
+        <ul class="cards" style="justify-content: center;">
+          {% if package == 'silver' %}
+          <li class="cards_item">
+            <div class="card">
+              <div class="card_content">
+                <h2 class="card_title">Gold</h2>
+              </div>
+            </div>
+          </li>
+          <li class="cards_item">
+            <div class="card">
+              <div class="card_content">
+                <h2 class="card_title">Platinum</h2>
+              </div>
+            </div>
+          </li>
+          {% endif %}
+          {% if package == 'gold' %}
+          <li class="cards_item">
+            <div class="card">
+              <div class="card_content">
+                <h2 class="card_title">Silver</h2>
+              </div>
+            </div>
+          </li>
+          <li class="cards_item">
+            <div class="card">
+              <div class="card_content">
+                <h2 class="card_title">Platinum</h2>
+              </div>
+            </div>
+          </li>
+          {% endif %}
+          {% if package == 'platinum' %}
+          <li class="cards_item">
+            <div class="card">
+              <div class="card_content">
+                <h2 class="card_title">Silver</h2>
+              </div>
+            </div>
+          </li>
+          <li class="cards_item">
+            <div class="card">
+              <div class="card_content">
+                <h2 class="card_title">Gold</h2>
+              </div>
+            </div>
+          </li>
+          {% endif %}
+          {% if package == none %}
+          <li class="cards_item">
+            <div class="card">
+              <div class="card_content">
+                <h2 class="card_title">Gold</h2>
+              </div>
+            </div>
+          </li>
+          <li class="cards_item">
+            <div class="card">
+              <div class="card_content">
+                <h2 class="card_title">Silver</h2>
+              </div>
+            </div>
+          </li>
+          <li class="cards_item">
+            <div class="card">
+              <div class="card_content">
+                <h2 class="card_title">Platinum</h2>
+              </div>
+            </div>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+</div>
+
+
+
+{% endblock content %}

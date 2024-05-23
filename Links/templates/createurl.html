@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}Influencerspro - Report{% endblock %}
+{% block content %}
+{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static '/css/createurl.css' %}">
+<br><br>
+<div id="contentContainer">
+  <div>
+    <h3 style="margin-right: 10%; margin-left: 10%;font-size: xx-large;"><b>Report</b></h3>
+  </div>
+  <br>
+  <div class="container">
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <!-- {{ form.as_p }} -->
+      <div class="row">
+        <div class="col-25">
+          <label for="your_dropdown"><h5>Select Packages:</h5></label>
+        </div>
+        <div class="col-75">
+          <select id="your_dropdown" name="drop" Required>
+            <option value="">Select</option>
+            {% for categorys in categorys %}
+            <option value="{{ categorys.category }}" Required>{{ categorys.category }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="" class="form-label"><h5>Url:</h5></label>
+        </div>
+        <div class="col-75">
+          <input class="form-control" type="text" name="url" placeholder="URL" Required />
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <input type="submit" value="Submit" style="font-size: large;">
+      </div>
+      <br>
+    </form>
+    <div>
+      <br>
+      <table>
+        {% if data %}
+        {% for data in data %}
+        <tr>
+          <td><h6>{{ data }}</h6></td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+      </table>
+      <br /><br />
+      <div class="pos">
+        {% if data %}
+        <a href="{% url 'generate_pdf' %}" class="btn sub" style="font-size: large;">Download Report</a>
+        {% endif %}
+      </div>
+
+    </div>
+
+  </div>
+</div>
+{% endblock content %}

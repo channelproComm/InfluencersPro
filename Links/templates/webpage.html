@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<style> 
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        text-align: center;
+    }
+
+</style>
+<div class="container">
+    <h2>Category</h2>
+    <br>
+    <hr>
+    <a class="list-group-item" href="{% url 'webpage' %}" style="text-decoration:none;color: black;">ALL</a>
+    {% for category in categorys %}
+    <li class="list-group-item">
+        <a href="{% url 'webpage' %}?category={{ category.category }}" style="text-decoration:none;color: black;">{{ category.category }}</a>
+    </li>
+    {% endfor %}
+</div>
+<br><br><br>
+    <div class="container">
+        <table>
+            <tr>
+                <th>Logo</th>
+                <th>Media</th>
+                <th>Type</th>
+                <th>Industry</th>
+                <th>Top 3 visiting countries</th>
+                <th>Potential Audience</th>
+                <th>Action</th>
+            </tr>
+            {% for page in pages %}
+            <tr >
+                <td><img src="{{ page.logo.url }}" height="20" width="200"></td>
+                <td>{{ page.media }}</td>
+                <td>{{ page.type }}</td>
+                <td>{{ page.industry }}</td>
+                <td>{{ page.visting }}</td>
+                <td>{{ page.audience }}</td>
+                <td><a href="{{ page.action }}">{{ page.action }}</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock content %}

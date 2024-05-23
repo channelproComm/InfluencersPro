@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}Influencerspro - Update Media{% endblock %}
+{% block content %}
+{% load static %}
+<title>Update Media</title>
+<link rel="stylesheet" href="{% static 'css/updatemedia.css' %}">
+<div id="contentContainer">
+    <div>
+        <h3 style="margin-right: 520px;margin-left: 527px;">Update Media</h3>
+    </div>
+    <br>
+    <div class="container">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- {{ form.as_p }} -->
+            <div class="row">
+                <div class="col-25">
+                    <label for="" class="form-label">Media</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="media" value="{{ prob.media }}" class="form-control" placeholder="Media">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="" class="form-label">Type</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="type" value="{{ prob.type }}" class="form-control" placeholder="Type">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="" class="form-label">Industry</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="industry" value="{{ prob.industry }}" class="form-control"
+                        placeholder="Industry">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label for="" class="form-label">Audience</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="audience" value="{{ prob.audience }}" class="form-control"
+                        placeholder="Audience">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="" class="form-label">Visting</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="visting" value="{{ prob.visting }}" class="form-control"
+                        placeholder="Visting">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="" class="form-label">Cost</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="cost" value="{{ prob.cost }}" class="form-control" placeholder="Cost">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="" class="form-label">URL</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="url" class="form-control" value="{{ prob.action }}" placeholder="Url">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="" class="form-label">Image</label>
+                </div>
+                <div class="col-75">
+                    <input type="file" name="logo" class="form-control" placeholder="Image">
+                    <br>
+                    {% if prob.logo %}
+                    <img src="{{ prob.logo.url }}" alt="sry" width="50%">
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <input type="submit" value="Update">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,118 @@
+{% block content %}
+<style>
+    .row1 {
+        background: #ebebeb;
+    }
+    .row2 {
+        background: white;
+    }
+    table,
+    th,
+    td {
+        text-align: center;
+    }
+    th,
+    td {
+        padding: 10px;
+    }
+    .page-break {
+        page-break-before: always;
+    }
+</style>
+<div>
+    <div style="text-align: right;">
+        <img src="pr\static\images\influencerspro.png" alt="" style="width: 50%; height: auto; margin-left: 10%;">
+    </div>
+    <br><br>
+    <br><br>
+    <h3 style="color: black;">{% now "M d, Y" %}</h3>
+    <p style="font-size: 90px;color: rgb(232, 63, 63);font-weight: bold;">Press Release <br>Distribution <br> Report</p>
+    <br>
+    <h2 style="font-size: 20px;text-align: center;">This document presents a comprehensive report containing relevant
+        information regarding <br> <br> <span
+            style="font-weight: bold;color:rgb(232, 63, 63) ;text-transform: capitalize;font-size: 30px;">
+            {{ gory }}</span></h2>
+</div>
+<div class="page-break"></div>
+<div>
+    <h1 style="color:rgb(232, 63, 63) ;font-size: 30px;">Distribution Report</h1>
+    <h1 style="font-size: 20px;">{{ title }}</h1>
+    <h2>Date Submited: {{ date }}</h2>
+    <br><br><br><br><br>
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 50%; font-size: 40px; color: rgb(232, 63, 63); font-weight: bold; text-align: center;">
+                {{ length }}
+                <p style="font-size: 20px; color: black;">Recorded Full Page Placement*</p>
+            </td>
+            <td style="width: 50%; font-size: 40px; color: rgb(232, 63, 63); font-weight: bold; text-align: center;">
+                {{ total_sum }} M
+                <p style="font-size: 20px; color: black;">Potential Audience Reach</p>
+            </td>
+        </tr>
+    </table>        
+    <div style="text-align: center;">
+        <p>* This is a partial list of online pickups that we are able to track. There are other websites that have
+            picked up the
+            release that we may not have tracked.</p>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
+        <table align="center">
+            <tr>
+                {% for logo in logo %}
+                    <td style="width: 25%;"><img src="http://127.0.0.1:8000/media/{{ logo.0 }}" alt="Dynamic Image"></td>
+                    {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                        <tr align="center"></tr>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        </table>
+        <p style="text-align: center;">& many more...</p>
+</div>
+<br>
+<div class="page-break"></div>
+{% if combined_text %}
+<div>
+    <br>
+    <h1 style="color:rgb(232, 63, 63) ;font-size: 30px;">Your Submited Press Release</h1>
+    <h4 style="font-size: 25px;">{{ title }}</h4>
+    <br>
+
+    {% if image_url %}
+        <img src="{{ image_url }}">
+    {% else %}
+        {{ ... }}
+    {% endif %}
+    <br>
+
+    <div>
+        <p style="font-size: 13px;">{{ combined_text }}</p>
+    </div>
+</div>
+{% endif %}
+<div class="page-break"></div>
+<div class="container">
+    <table>
+        <tr>
+            <th>Logo</th>
+            <th>Media</th>
+            <th>Type</th>
+            <th>Industry</th>
+            <th>Top 3 visiting countries</th>
+            <th>Potential Audience</th>
+            <th>Link</th>
+        </tr>
+        {% for data in combined_data %}
+        <tr class="{% cycle " row1" "row2" %}">
+            <td style="width: 20%;"><img src="http://127.0.0.1:8000/media/{{ data.0 }}" alt="Dynamic Image"></td>
+            <td>{{ data.1 }}</td>
+            <td>{{ data.2 }}</td>
+            <td>{{ data.3 }}</td>
+            <td>{{ data.4 }}</td>
+            <td>{{ data.5 }}</td>
+            <td><a href="{{ data.6 }}" target="_blank">View</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}

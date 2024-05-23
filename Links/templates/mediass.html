@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block title %}Influencerspro - Packages{% endblock %}
+{% block content %}
+{% load static %}
+<title>Pricing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/mediass.css' %}">
+<link rel="stylesheet" href="{% static 'css/cate.css' %}">
+<div id="contentContainer">
+  <div class="container">
+    <h2 style="text-align: center;" class="fw-bold">Packages</h2>
+    {% if user.is_authenticated and user.is_staff %}
+    <div class="row">
+      <div class="col add">
+        <button class="btn sub"><a href="{% url 'addcategory' %}" class="text">Add</a></button>
+      </div>
+    </div>
+    {% endif %}
+    <br>
+  </div>
+  <br>
+  <div class="row" style="margin-left: 40px;text-align: center;margin-right: 40px ">
+    {% for adjusted_cate in adjusted_cate %}
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+      <div class="card desg">
+        <div class="card-body">
+          <h4 class="card-title">
+            {{ adjusted_cate.cat.category }}
+        </h4>
+          <p class="card-text"><span>&#8377;</span>{{ adjusted_cate.adjusted_price|floatformat:2 }}</p>
+          {% if user.is_authenticated and user.is_staff %}
+          <a href="{% url 'deletecategory' adjusted_cate.cat.id %}" class="del"><i class="fa fa-trash"></i></a>
+          <a href="{% url 'updatecategory' adjusted_cate.cat.id %}" class="del"><i class="fa fa-edit"></i></a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% if forloop.counter|divisibleby:4 and not forloop.last %}
+    <div class="clearfix"></div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <br><br>
+  <div class="container-fluid con">
+    <h2 style="text-align: center;" class="fw-bold">Media Info</h2>
+    {% if user.is_authenticated and user.is_staff %}
+    <div class="row">
+      <div class="col add" style="
+        padding-left: 999px;
+    ">
+        <button class="btn sub"><a href="{% url 'adddata' %}" class="text">Add</a></button>
+      </div>
+    </div>
+    {% endif %}
+    <br>
+  </div>
+  <br>
+  <div>
+      <table>
+        <tr>
+          <th>Logo</th>
+          <th>Media</th>
+          <th>Type</th>
+          <th>Industry</th>
+          <th>Top 3 visiting countries</th>
+          <th>Potential Audience</th>
+          <th>Plan</th>
+          <th>Cost</th>
+          <th>Action</th>
+          {% if user.is_authenticated and user.is_staff %}
+          <th>Edit</th>
+          <th>Delete</th>
+          {% endif %}
+        </tr>
+        {% for adjusted_link in adjusted_links %}
+        <tr style="font-size: medium;">
+          <td><img src="{{ adjusted_link.page.logo.url }}" class="img"></td>
+          <td>{{ adjusted_link.page.media }}</td>
+          <td>{{ adjusted_link.page.type }}</td>
+          <td>{{ adjusted_link.page.industry }}</td>
+          <td>{{ adjusted_link.page.visting }}</td>
+          <td>{{ adjusted_link.page.audience }}</td>
+          <td>
+            {% for category in adjusted_link.page.category.all %}
+                {{ category }}
+                {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </td>
+          <td><span>&#8377;</span>{{ adjusted_link.adjusted_cost|floatformat:2 }}</td>
+          <td><a href="{{ adjusted_link.page.action }}" target="_blank">{{adjusted_link.page.action }}</a></td>
+          {% if user.is_authenticated and user.is_staff %}
+          <td><a href="{% url 'updatemedia' adjusted_link.page.id %}" class="del">
+            <i class="fa fa-edit"></i></a></td>
+          <td><a href="{% url 'deletemedia' adjusted_link.page.id %}" class="del">
+            <i class="fa fa-trash"></i></a>
+          </td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+</div>
+<script src="{% static '/js/mediass.js' %}"></script>
+{% endblock content %}

@@ -1,0 +1,122 @@
+{% extends 'base.html' %} 
+{% block title %}Influencerspro - Home{% endblock %}
+{% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/show.css' %}" />
+<br />
+<div id="contentContainer">
+  {% if user.is_authenticated and user.is_staff %}
+  <div class="row" style="align-items: center; margin-left: 100px; text-align: center">
+    <div class="col-lg-4">
+      <div class="card desg" style="width: 14rem">
+        <div class="card-body">
+          <h5 class="card-title">Total PR</h5>
+          <p class="card-text">{{ length }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card desg" style="width: 14rem">
+        <div class="card-body">
+          <h5 class="card-title">Total Packages</h5>
+          <p class="card-text">{{ length1 }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card desg" style="width: 14rem">
+        <div class="card-body">
+          <h5 class="card-title">Total Users</h5>
+          <p class="card-text">{{ user_count }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="row" style="margin-left: 160px; text-align: center; margin-right: 130px">
+    <div class="col-lg-4">
+      <div class="card desg" style="width: 14rem">
+        <div class="card-body">
+          <h5 class="card-title">Total Silver Users</h5>
+          <p class="card-text">{{ silver_user_count }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card desg" style="width: 14rem">
+        <div class="card-body">
+          <h5 class="card-title">Total Gold Users</h5>
+          <p class="card-text">{{ gold_user_count }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card desg" style="width: 14rem">
+        <div class="card-body">
+          <h5 class="card-title">Total Platinum Users</h5>
+          <p class="card-text">{{ platinum_user_count }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %} 
+  {% if not user.is_authenticated or not user.is_staff %}
+  <div class="row cd">
+    <div class="col-4">
+      <div class="card desg" style="width: 20rem; height: 7.3rem">
+        <div class="card-body">
+          <h5 class="card-text wel">Welcome, {{ request.user.username }}!</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card desg" style="width: 20rem">
+        <div class="card-body">
+          <h5 class="card-title">Total PR</h5>
+          <p class="card-text">{{ length }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card desg" style="width: 20rem">
+        <div class="card-body">
+          <h5 class="card-title">Total Packages</h5>
+          <p class="card-text">{{ length1 }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <br />
+  {% if not user.is_authenticated or not user.is_staff %}
+  <br />
+  <h3>Press Release ( PR )</h3>
+  <br />
+  <table>
+    <tr>
+      <th>Logo</th>
+      <th>Media</th>
+      <th>Type</th>
+      <th>Industry</th>
+      <th>Plan</th>
+      <th>Top 3 Visiting Countries</th>
+      <th>Potential Audience</th>
+      <th>Action</th>
+    </tr>
+    {% for link in links_for_user_categories %}
+    <tr>
+      <td>
+        <img src="{{ link.logo.url }}" alt="Logo" class="img" />
+      </td>
+      <td>{{ link.media }}</td>
+      <td>{{ link.type }}</td>
+      <td>{{ link.industry }}</td>
+      <td>{{ link.category.all.0 }}</td>
+      <td>{{ link.visting }}</td>
+      <td>{{ link.audience }}</td>
+      <td><a href="{{ link.action }}" target="_blank">{{ link.action }}</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+{% endif %} {% endblock content %}

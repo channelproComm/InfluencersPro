@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Influencerspro - Update Category{% endblock %}
+{% block content %}
+{% load static %}
+<title>Update Category</title>
+<link rel="stylesheet" href="{% static 'css/updatecat.css' %}">
+<div id="contentContainer">
+    <div>
+        <h3 style="margin-right: 10%; margin-left: 10%;">Update Packages</h3>
+    </div>
+    <br>
+    <div class="container">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- {{ form.as_p }} -->
+            <div class="row">
+                <div class="col-25">
+                    <label for="" class="form-label">Packages</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="category" value="{{ prob.category }}" class="form-control"
+                        placeholder="Packages">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="" class="form-label">Credit Amount</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="price" value="{{ prob.price }}" class="form-control" placeholder="Price">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <input type="submit" value="Update">
+            </div>
+            <br>
+        </form>
+    </div>
+</div>
+{% endblock content %}

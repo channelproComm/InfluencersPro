@@ -1,0 +1,146 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+/* Design */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #ecf9ff;
+}
+
+body {
+    color: #272727;
+    font-family: 'Quicksand', serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.cen {
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.sub {
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: rgb(235, 67, 67);
+}
+
+.sub:hover {
+  background-color: rgb(235, 67, 67);
+  font-size: large;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.button {
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 120px;
+  height: 80px;
+  background-color: rgb(235, 67, 67);
+  color: black;
+}
+
+.text {
+  text-decoration: none;
+  color: black;
+  width: 50px;
+  height: 33px;
+  font-size: x-large;
+}
+
+
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0
+  }
+
+  to {
+    top: 0;
+    opacity: 1
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0
+  }
+
+  to {
+    top: 0;
+    opacity: 1
+  }
+}
+
+.abut {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.add {
+  padding-left: 90%;
+}
+
+
+.del {
+  color: black;
+  font-size: medium;
+  text-decoration: none;
+}
+
+/* Media queries for responsiveness */
+@media only screen and (max-width: 767px) {
+  .cen {
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+
+  .add {
+    padding-left: 5%;
+  }
+
+  .sub,
+  .button {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 16px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.img {
+  max-width: 47%;
+  height: 36%; /* Add a subtle border to images */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+a {
+  text-decoration: none;
+  color: #3094ad;
+}

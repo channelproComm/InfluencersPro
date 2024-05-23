@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Influencerspro - Add Packages{% endblock %}
+{% block content %}
+<title>Add Category</title>
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="text-center">
+                    <h2 class="fw-bold mb-4">Add Category</h2>
+                </div>
+                <br><br>
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row mb-3">
+                        <div class="col-3">
+                            <label for="category" class="form-label">Category</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" required id="category" name="category" class="form-control" placeholder="Enter Category">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-3">
+                            <label for="price" class="form-label">Price</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" required id="price" name="price" class="form-control" placeholder="Enter Price">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn" style="background-color:rgb(246, 100, 100)">Insert</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

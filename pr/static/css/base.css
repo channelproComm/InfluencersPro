@@ -1,0 +1,193 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+/* Design */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    background-color: #f3fbff;
+}
+#bodyContent.opened {
+  margin-left: 250px; /* Adjust the margin-left based on the width of your navbar */
+  transition: margin-left 0.5s;
+}
+body {
+    color: #272727;
+    font-family: 'Quicksand', serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    background-color: white;
+}
+
+@media (min-width: 768px) {
+  body {
+     font-size: 1rem;
+  }
+  
+}
+footer {
+  margin-top: auto;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 100px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #989898;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+.nav-spc {
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+a.split {
+  float: right;
+  color: black;
+  text-decoration: none;
+  font-size: 24px;
+  display: flex;
+  margin: 0px 5px;
+}
+
+p.split {
+  float: right;
+  color: black;
+  text-decoration: none;
+  font-size: 24px;
+  display: flex;
+  margin: 0px 5px;
+  text-transform: uppercase;
+}
+.client{
+  float:right;
+  margin: 0px 5px;
+  color:black ;
+  font-size: 18px;
+  margin-top: 4px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+.dropdown-content a.log {
+  color: red;
+  display: flex;
+}
+
+.logo {
+  padding: 6px 8px;
+}
+
+.dropbtn {
+  color: black;
+  padding: 0px 25px;
+  padding-left: 13px;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  display: inline;
+  background-color: #fff;
+}
+
+.dropdown {
+  float: right;
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 134px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  right: 0;
+  z-index: 1;
+}
+
+.dropdown-content a,
+p {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: large;
+}
+
+.dropdown-divider {
+  height: 0;
+  margin: 0.5rem 0;
+  overflow: hidden;
+  border-top: 1px solid #d7d7d7;
+  opacity: 1;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+
+@media (max-width: 768px) {
+
+  .nav-spc {
+    text-align: center;
+  }
+}
+.sidenav.collapsed .nav-link .nav-title {
+  display: none;
+}
+
+.sidenav.collapsed .nav-link i {
+  margin-right: 0;
+}
